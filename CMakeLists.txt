@@ -28,9 +28,11 @@ add_subdirectory(ompSimpleProject)
 add_subdirectory(ompLeibnizSeries1)
 add_subdirectory(ompLeibnizSeries2_A)
 add_subdirectory(ompLeibnizSeries2_B)
+add_subdirectory(ompLeibnizSeries2_C)
 add_subdirectory(ompLeibnizSeries3)
 add_subdirectory(ompLeibnizSeries4)
 add_subdirectory(ompLeibnizSeries_AllInOne)
+add_subdirectory(ompMatrixProduct)
 
 
 
