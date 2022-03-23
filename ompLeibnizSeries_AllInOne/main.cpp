@@ -9,24 +9,24 @@ int main(){
     
     //******* Serial mode
     auto beginTimerSerial = std::chrono::high_resolution_clock::now();
-
+/*
     for(long indice = 0; indice < numeroIteraciones; indice++){
         if(indice % 2 == 0){
             respuestaSerial += 4.0 / (2.0 * indice + 1.0);
         }else{
             respuestaSerial -= 4.0 / (2.0 * indice + 1.0);
         }
-    }
+    }*/
     //Otimized serial mode
-//    bool esIndicePar = true;
-//    for(long indice = 0; indice <= numeroIteraciones; indice++){
-//        if(esIndicePar == true){
-//          respuestaSerial += 4.0 / (2.0 * indice + 1.0);
-//        }else{
-//          respuestaSerial -= 4.0 / (2.0 * indice + 1.0);
-//        }
-//        esIndicePar = !esIndicePar;
-//    }
+    bool esIndicePar = true;
+    for(long indice = 0; indice <= numeroIteraciones; indice++){
+        if(esIndicePar == true){
+          respuestaSerial += 4.0 / (2.0 * indice + 1.0);
+        }else{
+          respuestaSerial -= 4.0 / (2.0 * indice + 1.0);
+        }
+        esIndicePar = !esIndicePar;
+    }
     
     auto endTimerSerial = std::chrono::high_resolution_clock::now();
     auto elapsedSerial = std::chrono::duration_cast<std::chrono::nanoseconds>(endTimerSerial - beginTimerSerial);
@@ -37,7 +37,7 @@ int main(){
     //******* End serial code
     
     //****** Pallelized code
-    int numeroHilos = 6, idHilo;
+    int numeroHilos = 2, idHilo;
     omp_set_num_threads(numeroHilos);
     double respuesta = 0.0, sumasParciales[numeroHilos];
     
