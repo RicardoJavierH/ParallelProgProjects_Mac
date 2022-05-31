@@ -1,7 +1,7 @@
 #include <iostream>
 #include "omp.h"
 #include <chrono>
-
+#include <cmath>
 const int n = 1000;
 double A[n][n], B[n][n], C1[n][n], C2[n][n];
 
@@ -13,9 +13,7 @@ void parallelProduct(int m);
 
 int main(){
 
-    generatesMatrices(n);
-
-//Serial mode product *******
+    //Serial mode product *******
     auto beginTimerSerial = std::chrono::high_resolution_clock::now();
 
     serialProduct(n);
@@ -58,8 +56,8 @@ void serialProduct(int m){
 void parallelProduct(int m){
     int i,j,k;
 //#pragma omp parallel for schedule(static,50) collapse(2) private(i,j,k) shared(A,B,C2) ////Static Scheduler
-#pragma omp parallel for schedule(dynamic,50) collapse(2) private(i,j,k) shared(A,B,C2) ////Dynamic Scheduler
-//#pragma omp parallel for private(i,j,k) shared(A,B,C2)
+//#pragma omp parallel for schedule(dynamic,50) collapse(2) private(i,j,k) shared(A,B,C2) ////Dynamic Scheduler
+#pragma omp parallel for private(i,j,k) shared(A,B,C2)
     for(i=0; i<m; i++)
         for(j=0; j<m; j++)
             for(k=0; k<m; k++)

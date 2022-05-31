@@ -34,8 +34,8 @@ add_subdirectory(ompLeibnizSeries4)
 add_subdirectory(ompLeibnizSeries_AllInOne)
 add_subdirectory(ompMatrixProduct)
 
-
-
+add_subdirectory(PthreadSimpleProject)
+add_subdirectory(PthreadMatrixVectProduct)
 
 
 
